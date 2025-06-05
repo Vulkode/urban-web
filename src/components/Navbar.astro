@@ -1,0 +1,40 @@
+<nav>
+    <div class="nav-container">
+        <a href="/">HOME</a>
+        <a href="/#info">INFO</a>
+        <a href="/Academia">ACADEMIA</a>
+        <a href="https://urbanbuilders.tebex.io/" target="_blank">TIENDA</a>
+        <a href="/Ayuda">AYUDA</a>
+        <a href="/Destacado">DESTACADOS</a>
+    </div>
+</nav>
+
+<style>
+    nav{
+        display: flex;
+        justify-content: center;
+    }
+    .nav-container {
+        margin-top: 10px;
+        display: flex;
+        gap: 4rem;
+        justify-content: center;
+        padding: 20px 40px;
+        background-color: rgb(0, 0, 0, 0.5);
+        border-radius: 20px;
+        position: fixed;
+        z-index: 10;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+    }
+    a{
+        text-decoration: none;
+        color: #e0e0e0;
+        font-family: 'Poppins', sans-serif;
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+    a:hover{
+        transform: translateY(-5px);
+        color: #00ffaa;
+    }
+</style>
