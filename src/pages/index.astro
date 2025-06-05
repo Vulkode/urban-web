@@ -8,10 +8,62 @@ import Navbar from '../components/Navbar.astro';
 	<Navbar></Navbar>
 	<Header></Header>
 	<main>
-		
+		<section id="info" class="info">
+			<h1>¿Que es <span>Urban Builders</span>?</h1>
+			<div class="what-container">
+				<img src="/members.png" alt="">
+				<p>En <b>UrbanBuilders</b>, unimos a constructores <span>creativos</span> para compartir, <span>aprender y colaborar</span> en proyectos únicos. Ofrecemos un espacio donde <span>la construcción es el corazón</span>, con <b>servidores exclusivos, plots públicas y herramientas</b> para que tu imaginación no tenga límites.</p>
+			</div>
+			<hr>
+			<div class="what-container">
+				<p>Mientras la mayoría de comunidades destacadas son en inglés, en <b>UrbanBuilders</b> celebramos el talento <span>hispanohablante</span>, ofreciendo un espacio inclusivo donde el <b>idioma</b> no sea un obstáculo para <span>crecer, inspirar y conectar</span>. <br><br>
+
+				Ser el <span>referente para builders hispanohablantes</span>, fomentando la creatividad, la colaboración y el profesionalismo dentro de <b>Minecraft</b>.</p>
+				<img src="/users.png" alt="">
+			</div>
+		</section>
 	</main>
 
 	<style>
-
+		main{
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			font-family: 'Poppins';
+		}
+		.info{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			width: 90%;
+		}
+		h1{
+			font-size: 50px;
+		}
+		span{
+			color: rgb(0, 255, 170, 0.7);
+		}
+		hr{
+			width: 750px;
+		}
+		.what-container{
+			margin-top: 2rem;
+			margin-bottom: 2rem;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			gap: 1rem;
+			max-width: 750px;
+		}
+		.what-container img{
+			height: 200px;
+			width: auto;
+			border-radius: 10px;
+			box-shadow: 0 5px 15px rgb(0, 255, 170, 0.1);
+		}
+		.what-container p{
+		}
 	</style>
 </Layout>
