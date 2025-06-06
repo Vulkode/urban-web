@@ -2,14 +2,15 @@
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Navbar from '../components/Navbar.astro';
+import Team from '../components/Team.astro'
 ---
 
-<Layout>
+<Layout title="Urban Builders">
 	<Navbar></Navbar>
 	<Header></Header>
 	<main>
 		<section id="info" class="info">
-			<h1>¿Que es <span>Urban Builders</span>?</h1>
+			<h1 class="h1-1">¿Que es <span>Urban Builders</span>?</h1>
 			<div class="what-container">
 				<img src="/members.png" alt="">
 				<p>En <b>UrbanBuilders</b>, unimos a constructores <span>creativos</span> para compartir, <span>aprender y colaborar</span> en proyectos únicos. Ofrecemos un espacio donde <span>la construcción es el corazón</span>, con <b>servidores exclusivos, plots públicas y herramientas</b> para que tu imaginación no tenga límites.</p>
@@ -21,9 +22,9 @@ import Navbar from '../components/Navbar.astro';
 				Ser el <span>referente para builders hispanohablantes</span>, fomentando la creatividad, la colaboración y el profesionalismo dentro de <b>Minecraft</b>.</p>
 				<img src="/users.png" alt="">
 			</div>
-			<div class="join-container">
+			<div class="box-container">
 				<h1>¡Unete a la <span>Comunidad</span>!</h1>
-				<p><b>¿Te apasiona construir?</b> Sé parte de un grupo que valora el <span>detalle</span>, la <span>originalidad</span> y el <span>trabajo en equipo</span>.</p>
+				<p class="descp-comunity"><b>¿Te apasiona construir?</b> Sé parte de un grupo que valora el <span>detalle</span>, la <span>originalidad</span> y el <span>trabajo en equipo</span>.</p>
 				<div class="comunity-container">
 					<p><span><i class="fa-solid fa-circle-check"></i></span> Conecta con builders de todo el mundo <span><b>hispano</b></span>.
 
@@ -32,7 +33,7 @@ import Navbar from '../components/Navbar.astro';
 					<br><br><span><i class="fa-solid fa-circle-check"></i></span> Crea proyectos <b><span>épicos</span></b> en un entorno sin límites.
 
 					<br><br><span><i class="fa-solid fa-door-open"></i></span> ¡Construye, <b><span>innova</span></b> y deja tu <b><span>marca</span></b> en <b>UrbanBuilders</b>!</p>
-					<img src="/Urban_Logo_1.png" alt="">
+					<img src="/comunity.svg" alt="">
 				</div>
 				<div class="links-container">
 					<a href="#"><i class="fa-brands fa-discord"></i></a>
@@ -42,6 +43,7 @@ import Navbar from '../components/Navbar.astro';
 				</div>
 			</div>
 		</section>
+		<Team></Team>
 	</main>
 
 	<style>
@@ -61,6 +63,7 @@ import Navbar from '../components/Navbar.astro';
 		}
 		h1{
 			font-size: 50px;
+			font-weight: 900;
 		}
 		span{
 			color: rgb(0, 255, 170, 0.7);
@@ -68,9 +71,12 @@ import Navbar from '../components/Navbar.astro';
 		hr{
 			width: 750px;
 		}
+		.h1-1{
+			margin-top: 5.5rem;
+		}
 		.what-container{
-			margin-top: 2rem;
-			margin-bottom: 2rem;
+			margin-top: 4rem;
+			margin-bottom: 3rem;
 			display: flex;
 			justify-content: center;
 			align-items: center;
@@ -84,7 +90,7 @@ import Navbar from '../components/Navbar.astro';
 			box-shadow: 0 5px 15px rgb(0, 255, 170, 0.1);
 		}
 
-		.join-container{
+		.box-container{
 			margin-top: 5rem;
 			display: flex;
 			flex-direction: column;
@@ -95,8 +101,11 @@ import Navbar from '../components/Navbar.astro';
 			box-shadow: 0 5px 15px rgb(0, 0, 0);
 			margin-bottom: 100px;
 		}
+		.box-container .descp-comunity{
+			margin-top: 2rem;
+		}
 		.comunity-container{
-			margin-top: 1rem;
+			margin-top: 2rem;
 			display: flex;
 			gap: 3rem;
 		}
@@ -108,6 +117,7 @@ import Navbar from '../components/Navbar.astro';
 			filter: drop-shadow(0 5px 15px rgb(0, 255, 170, 0.7));
 		}
 		.links-container{
+			margin-top: 2rem;
 			display: flex;
 			gap: 1rem;
 		}
