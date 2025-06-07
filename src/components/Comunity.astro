@@ -11,7 +11,7 @@
 		<br><br><span><i class="fa-solid fa-door-open"></i></span> ¡Construye, <b><span>innova</span></b> y deja <b><span>marca</span></b> en <b>UrbanBuilders</b>!</p>
 		<img class="h-52 w-auto max-w-full" src="/comunity.svg" alt="">
 	</div>
-	<div class="links-container">
+	<div class="links-container grid grid-cols-2 text-center">
 		<a href="https://discord.gg/TbMD3zdWXt" target="_blank"><i class="fa-brands fa-discord"></i></a>
 		<a href="https://x.com/urbanbuildersmc" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
 		<a href="https://www.tiktok.com/@urbanbuildersmc" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
@@ -47,9 +47,8 @@
         filter: drop-shadow(0 5px 15px rgb(0, 255, 170, 0.7));
     }
     .links-container{
-        margin-top: 2rem;
+        margin-top: 4rem;
         margin-bottom: 2rem;
-        display: flex;
         gap: 1rem;
     }
     .links-container a{
@@ -59,7 +58,6 @@
         color: #e0e0e0;
         padding: 10px 15px;
         transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-        margin-top: 2rem;
     }
     .links-container a:hover{
         background-color: rgb(0, 255, 170, 0.5);
@@ -68,5 +66,11 @@
     }
     .links-container a i{
         font-size: 25px;
+    }
+
+    @media (min-width: 390px) {
+        .links-container{
+            grid-template-columns: repeat(4, 1fr);
+        }
     }
 </style>
