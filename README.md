@@ -1,48 +1,67 @@
-# Astro Starter Kit: Basics
+# Urban Builders
 
-```sh
-npm create astro@latest -- --template basics
-```
+¡Bienvenido a **Urban Builders**! 🎉
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+Urban Builders es una comunidad hispana de builders en **Minecraft** dedicada a compartir, aprender y crecer juntos en el arte de construir en el juego más creativo del mundo. Si te encanta diseñar, construir y colaborar con otros apasionados del Minecraft, ¡este es tu lugar!
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## 🚀 ¿Qué es Urban Builders?
 
-## 🚀 Project Structure
+Urban Builders es una plataforma para builders hispanohablantes que buscan:
 
-Inside of your Astro project, you'll see the following folders and files:
+- Mostrar sus construcciones impresionantes.
+- Compartir tips, tutoriales y recursos.
+- Colaborar en proyectos y eventos comunitarios.
+- Inspirarse y motivarse en un ambiente amigable y creativo.
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+---
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+## ✨ Características
 
-## 🧞 Commands
+- **Galería de construcciones**: Un espacio para mostrar tus mejores obras.
+- **Foros y chat**: Para interactuar con otros miembros y recibir feedback.
+- **Recursos exclusivos**: Planos, mods, y herramientas para mejorar tus builds.
+- **Eventos periódicos**: Concursos, retos y colaboraciones temáticas.
 
-All commands are run from the root of the project, from a terminal:
+---
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## 🛠 Tecnologías usadas
 
-## 👀 Want to learn more?
+- **HTML5 / CSS3 / JavaScript**
+- Frameworks y librerías: **Astro / Tailwind**
+- Hosting: **Vercel**
+- Y mucho más...
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+---
+
+## 📅 Próximos pasos
+
+- Añadir sección de tutoriales en video
+
+---
+
+## 🤝 ¿Cómo colaborar?
+
+Si quieres ser parte de esta comunidad o ayudar con el desarrollo de la página, puedes:
+
+1. Hacer un *fork* de este repositorio.
+2. Crear una rama con tus mejoras (`git checkout -b mejora-nueva`).
+3. Hacer un *commit* con tus cambios (`git commit -m "Agrego nueva función"`).
+4. Enviar un *pull request* para revisión.
+
+---
+
+## 💬 Contacto
+
+Si tienes preguntas o quieres sugerir algo, no dudes en contactarnos en:
+
+- Discord: [UrbanBuilders#1234](https://discord.gg/TbMD3zdWXt)
+
+---
+
+¡Gracias por ser parte de Urban Builders! Construyamos juntos el futuro de Minecraft en español. 🏗️🌍
+
+---
+
+*Este proyecto está bajo licencia MIT.*
