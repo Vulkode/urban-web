@@ -1,3 +1,48 @@
-<section>
-    
+---
+import CardTeam from "./CardTeam.astro";
+---
+
+<section class="flex flex-col items-center max-w-7xl">
+    <h2 class="text-5xl font-extrabold mt-12">¡Conoce nuestro <span class="text-emerald-500">Equipo</span>!</h2>
+    <p class="max-w-3xl text-center mt-8">Nuestro equipo está formado por personas <b>apasionadas, creativas y comprometidas</b> con ofrecer lo mejor en cada proyecto. <span class="text-emerald-600">¡Te invitamos a conocerlos!</span></p>
+
+    <!-- contenedor para las cards -->
+    <div class="grid grid-cols-2 md:grid-cols-3 mt-16 gap-6 mb-16 w-11/12 justify-items-center">
+        <!-- cards -->
+        <CardTeam 
+        image="/team/sebas.png" alte="Imagen de perfil de Sebastian Maker" 
+        name="Sebastian Maker" 
+        rol="CEO & Builder" 
+        desc="Directivo estratégico de urban builders y constructor a profesión" 
+        contac="sebastianmaker"></CardTeam>
+
+        <CardTeam image="/team/felipe.png" alte="Imagen de perfil de ElFelipeB3" 
+        name="ElFelipeB3" 
+        rol="Media Manger & Builder" 
+        desc="Builder en Minecraft, me especializo en Lobbys/Spawns, responsable y muy serio." 
+        contac="420felipeot"></CardTeam>
+
+        <CardTeam image="/team/zeeit.png" alte="Imagen de perfil de Zeeit"  
+        name="Zeeit" 
+        rol="Staff & Builder" 
+        desc="Builder que transforma lo complejo en soluciones únicas con creatividad e innovación" 
+        contac="zeeitv2"></CardTeam>
+
+        <CardTeam image="/team/cami.png" alte="Imagen de perfil de Camilo" 
+        name="zKMilo_A" 
+        rol="Staff & Builder" 
+        desc="Creativo y detallista. Builder en Minecraft y desarrollador web apasionado por la tecnología." 
+        contac="camilo_dt16"></CardTeam>
+
+        <CardTeam image="/team/saturn.png" alte="Imagen de perfil de iSaturnx" 
+        name="iSaturnx" 
+        rol="Staff & Builder" 
+        desc="Builder en Minecraft, muy creativo, me encargo en decoraciones, terrenos y estructuras, entre otras cosas" 
+        contac="isaturnx."></CardTeam>
+
+        <CardTeam image="/team/agus.png" alte="Imagen de perfil de Agustin"  
+        name="AgustiA3800K" 
+        rol="Staff & Builder" 
+        desc="Builder en Minecraft, muy creativo, me encargo en decoraciones, terrenos y estructuras, entre otras cosas" 
+        contac="agustia38008k"></CardTeam>
 </section>

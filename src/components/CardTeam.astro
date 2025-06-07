@@ -1,0 +1,23 @@
+---
+const {image, name, rol, desc, contac, alte} = Astro.props;
+---
+
+<div class="
+flex flex-col
+max-w-80 gap-4 
+bg-neutral-800 
+rounded-2xl 
+shadow hover:shadow-lg hover:shadow-black 
+hover:-translate-y-1.5 
+transition-all duration-300 ease-in-out
+">
+    <img src={image} alt={alte} class="h-60 aspect-square rounded-t-2xl object-cover object-top">
+    <div class="flex flex-col p-2.5 justify-between min-h-50">
+        <div>
+            <h2 class="text-2xl font-bold">{name}</h2>
+            <p class="text-white/50">{rol}</p>
+        </div>
+        <p class="text-white/70 text-[15px]">{desc}</p>
+        <p class="text-white/70"><i class="fa-brands fa-discord"></i> Contacto: <span class="text-emerald-500">@{contac}</span></p>
+    </div>
+</div>
