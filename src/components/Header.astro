@@ -2,9 +2,9 @@
 ---
 <header id="hero" class="hero">
     <div class="overlay-general"></div>
-    <div class="hero-logo">
+    <div class="hero-logo flex-col sm:flex-row">
         <img src="/Urban_Logo_1.png">
-        <h1>URBAN <span>BUILDERS</span></h1>
+        <h1 class="text-[90px] sm:text-[120px]">URBAN <span class="text-[60px] sm:text-[80px]">BUILDERS</span></h1>
     </div>
     <div class="hero-btns">
         <a class="btn" href="#"><i class="fa-solid fa-link"></i> mc.urbanbuilder.net</a>
@@ -36,7 +36,6 @@
     }
     .hero-logo{
         display: flex;
-        flex-direction: row;
         align-items: center;
         justify-content: center;
         gap: 1rem;
@@ -49,7 +48,6 @@
     .hero-logo h1{
         font-family: "Luckiest Guy", sans-serif;
         font-weight: 700;
-        font-size: 120px;
         line-height: 1.1;
         letter-spacing: 4px;
         color: white;
@@ -57,7 +55,6 @@
     .hero-logo span{
         display: block;
         font-family: 'Satisfy';
-        font-size: 80px;
         color: #b6b6b6;
     }
     .hero-btns{

@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Navbar from '../components/Navbar.astro';
 import Team from '../components/Team.astro'
+import Comunity from '../components/Comunity.astro';
 ---
 
 <Layout title="Urban Builders">
@@ -10,37 +11,18 @@ import Team from '../components/Team.astro'
 	<Header></Header>
 	<main>
 		<section id="info" class="info">
-			<h1 class="h1-1">¿Que es <span>Urban Builders</span>?</h1>
-			<div class="what-container">
+			<h2 class="h1-1 text-center">¿Que es <span>Urban Builders</span>?</h2>
+			<div class="what-container text-center sm:text-left flex-col sm:flex-row">
 				<img src="/members.png" alt="">
-				<p>En <b>UrbanBuilders</b>, unimos a constructores <span>creativos</span> para compartir, <span>aprender y colaborar</span> en proyectos únicos. Ofrecemos un espacio donde <span>la construcción es el corazón</span>, con <b>servidores exclusivos, plots públicas y herramientas</b> para que tu imaginación no tenga límites.</p>
+				<p class="max-w-80">En <b>UrbanBuilders</b>, unimos a constructores <span>creativos</span> para compartir, <span>aprender y colaborar</span> en proyectos únicos. Ofrecemos un espacio donde <span>la construcción es el corazón</span>, con <b>servidores exclusivos, plots públicas y herramientas</b> para que tu imaginación no tenga límites.</p>
 			</div>
-			<div class="what-container">
-				<p>Mientras la mayoría de comunidades destacadas son en inglés, en <b>UrbanBuilders</b> celebramos el talento <span>hispanohablante</span>, ofreciendo un espacio inclusivo donde el <b>idioma</b> no sea un obstáculo para <span>crecer, inspirar y conectar</span>. <br><br>
+			<div class="what-container text-center sm:text-left flex-col sm:flex-row">
+				<p class="order-2 sm:order-1 max-w-80">Mientras la mayoría de comunidades destacadas son en inglés, en <b>UrbanBuilders</b> celebramos el talento <span>hispanohablante</span>, ofreciendo un espacio inclusivo donde el <b>idioma</b> no sea un obstáculo para <span>crecer, inspirar y conectar</span>. <br><br>
 
 				Ser el <span>referente para builders hispanohablantes</span>, fomentando la creatividad, la colaboración y el profesionalismo dentro de <b>Minecraft</b>.</p>
-				<img src="/users.png" alt="">
+				<img class="order-1 sm:order-2" src="/users.png" alt="">
 			</div>
-			<div class="box-container">
-				<h1>¡Unete a la <span>Comunidad</span>!</h1>
-				<p class="descp-comunity"><b>¿Te apasiona construir?</b> Sé parte de un grupo que valora el <span>detalle</span>, la <span>originalidad</span> y el <span>trabajo en equipo</span>.</p>
-				<div class="comunity-container">
-					<p><span><i class="fa-solid fa-circle-check"></i></span> Conecta con builders de todo el mundo <span><b>hispano</b></span>.
-
-					<br><br><span><i class="fa-solid fa-circle-check"></i></span> Aprende <span><b>técnicas nuevas</b></span> y comparte tus conocimientos.
-
-					<br><br><span><i class="fa-solid fa-circle-check"></i></span> Crea proyectos <b><span>épicos</span></b> en un entorno sin límites.
-
-					<br><br><span><i class="fa-solid fa-door-open"></i></span> ¡Construye, <b><span>innova</span></b> y deja tu <b><span>marca</span></b> en <b>UrbanBuilders</b>!</p>
-					<img src="/comunity.svg" alt="">
-				</div>
-				<div class="links-container">
-					<a href="https://discord.gg/TbMD3zdWXt" target="_blank"><i class="fa-brands fa-discord"></i></a>
-					<a href="https://x.com/urbanbuildersmc" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
-					<a href="https://www.tiktok.com/@urbanbuildersmc" target="_blank"><i class="fa-brands fa-tiktok"></i></a>
-					<a href="https://www.youtube.com/@UrbanBuildersMC" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-				</div>
-			</div>
+			<Comunity></Comunity>
 		</section>
 		<Team></Team>
 	</main>
@@ -60,7 +42,7 @@ import Team from '../components/Team.astro'
 			align-items: center;
 			width: 90%;
 		}
-		h1{
+		h2{
 			font-size: 50px;
 			font-weight: 900;
 		}
@@ -84,55 +66,6 @@ import Team from '../components/Team.astro'
 			width: auto;
 			border-radius: 10px;
 			box-shadow: 0 5px 15px rgb(0, 255, 170, 0.1);
-		}
-
-		.box-container{
-			margin-top: 5rem;
-			display: flex;
-			flex-direction: column;
-			align-items: center;
-			background-color: #141414;
-			padding: 20px 30px;
-			border-radius: 20px;
-			box-shadow: 0 5px 15px rgb(0, 0, 0);
-			margin-bottom: 100px;
-		}
-		.box-container .descp-comunity{
-			margin-top: 2rem;
-		}
-		.comunity-container{
-			margin-top: 2rem;
-			display: flex;
-			gap: 3rem;
-		}
-		.comunity-container img{
-			height: 200px;
-			width: auto;
-		}
-		.comunity-container p i{
-			filter: drop-shadow(0 5px 15px rgb(0, 255, 170, 0.7));
-		}
-		.links-container{
-			margin-top: 2rem;
-			display: flex;
-			gap: 1rem;
-		}
-		.links-container a{
-			background-color: rgb(0, 255, 170, 0.2);
-        	border-radius: 10px;
-        	text-decoration: none;
-        	color: #e0e0e0;
-        	padding: 10px 15px;
-        	transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-			margin-top: 2rem;
-		}
-		.links-container a:hover{
-        	background-color: rgb(0, 255, 170, 0.5);
-        	box-shadow: 0 5px 15px #00ffaa;
-			transform: translateY(-5px);
-		}
-		.links-container a i{
-			font-size: 25px;
 		}
 	</style>
 </Layout>
