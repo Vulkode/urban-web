@@ -1,0 +1,109 @@
+---
+import Navbar from "../../components/Navbar.astro";
+import Layout from "../../layouts/Layout.astro";
+---
+
+<Layout title="Academia">
+    <Navbar></Navbar>
+    <header class="w-full flex flex-col items-center">
+        <!-- Hero -->
+        <div class="w-11/12 flex justify-center">
+            <div class="w-full h-[550px] sm:h-[450px] md:h-[450px] lg:h-96 bg-[url(/main-academy.png)] bg-cover bg-no-repeat bg-center absolute opacity-50 blur-xs"></div>
+            <div class="relative w-5xl h-[550px] sm:h-[450px] md:h-[450px] lg:h-96 flex flex-col items-start justify-center gap-8">
+                <h1 class="text-7xl font-extrabold">Aprende <span class="text-emerald-500">con Nosotros</span></h1>
+                <p class="text-xl max-w-2xl">Descubre cómo crear <b><span class="text-emerald-600">terrenos</span></b>, construir <b><span class="text-emerald-600">estructuras</span></b> y aprende valiosos <b><span class="text-emerald-600">tips</span></b> para llevar tus proyectos al siguiente nivel.</p>
+                <a class="px-5 py-2.5 bg-emerald-500/30 rounded-xl group hover:bg-emerald-500 shadow hover:shadow-lg hover:shadow-emerald-500 hover:-translate-y-1 transition-all duration-300 ease" href="https://discord.gg/TbMD3zdWXt" target="_blank">Obten mas ayuda en nuestro servidor de discord <i class="fa-solid fa-arrow-up-right-from-square ml-1.5 group-hover:scale-120 transition-transform duration-300 ease"></i></a>
+            </div>  
+        </div>
+
+        <!-- card +info -->
+        <div class="z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 m-4 max-w-5xl bg-[#181818] rounded-xl shadow-lg shadow-neutral-950 -mt-8 px-3 py-2">
+        
+            <!-- Items -->
+            <div class="flex gap-2 items-center">
+                <svg class="w-16 h-16 text-neutral-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M9.98189 4.50602c1.24881-.67469 2.78741-.67469 4.03621 0l3.9638 2.14148c.3634.19632.6862.44109.9612.72273l-6.9288 3.60207L5.20654 7.225c.2403-.22108.51215-.41573.81157-.5775l3.96378-2.14148ZM4.16678 8.84364C4.05757 9.18783 4 9.5493 4 9.91844v4.28296c0 1.3494.7693 2.5963 2.01811 3.2709l3.96378 2.1415c.32051.1732.66011.3019 1.00901.3862v-7.4L4.16678 8.84364ZM13.009 20c.3489-.0843.6886-.213 1.0091-.3862l3.9638-2.1415C19.2307 16.7977 20 15.5508 20 14.2014V9.91844c0-.30001-.038-.59496-.1109-.87967L13.009 12.6155V20Z"/>
+                </svg>
+
+                <div>
+                    <h3 class="font-extrabold">Creación de terrenos</h3>
+                    <p class="text-neutral-400">Técnicas para diseñar y modelar terrenos realistas o creativos.</p>
+                </div>
+            </div>
+
+            <div class="flex gap-4 items-center">
+                <svg class="w-16 h-16 text-neutral-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M3 21h18M4 18h16M6 10v8m4-8v8m4-8v8m4-8v8M4 9.5v-.955a1 1 0 0 1 .458-.84l7-4.52a1 1 0 0 1 1.084 0l7 4.52a1 1 0 0 1 .458.84V9.5a.5.5 0 0 1-.5.5h-15a.5.5 0 0 1-.5-.5Z"/>
+                </svg>
+
+                <div>
+                    <h3 class="font-extrabold">Construcción de estructuras</h3>
+                    <p class="text-neutral-400">Desde bases simples hasta edificaciones complejas.</p>
+                </div>
+            </div>
+
+            <div class="flex gap-4 items-center">
+                <svg class="w-16 h-16 text-neutral-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linejoin="round" stroke-width="2" d="M7.58209 8.96025 9.8136 11.1917l-1.61782 1.6178c-1.08305-.1811-2.23623.1454-3.07364.9828-1.1208 1.1208-1.32697 2.8069-.62368 4.1363.14842.2806.42122.474.73509.5213.06726.0101.1347.0133.20136.0098-.00351.0666-.00036.1341.00977.2013.04724.3139.24069.5867.52125.7351 1.32944.7033 3.01552.4971 4.13627-.6237.8375-.8374 1.1639-1.9906.9829-3.0736l4.8107-4.8108c1.0831.1811 2.2363-.1454 3.0737-.9828 1.1208-1.1208 1.3269-2.80688.6237-4.13632-.1485-.28056-.4213-.474-.7351-.52125-.0673-.01012-.1347-.01327-.2014-.00977.0035-.06666.0004-.13409-.0098-.20136-.0472-.31386-.2406-.58666-.5212-.73508-1.3294-.70329-3.0155-.49713-4.1363.62367-.8374.83741-1.1639 1.9906-.9828 3.07365l-1.7788 1.77875-2.23152-2.23148-1.41419 1.41424Zm1.31056-3.1394c-.04235-.32684-.24303-.61183-.53647-.76186l-1.98183-1.0133c-.38619-.19746-.85564-.12345-1.16234.18326l-.86321.8632c-.3067.3067-.38072.77616-.18326 1.16235l1.0133 1.98182c.15004.29345.43503.49412.76187.53647l1.1127.14418c.3076.03985.61628-.06528.8356-.28461l.86321-.8632c.21932-.21932.32446-.52801.2846-.83561l-.14417-1.1127ZM19.4448 16.4052l-3.1186-3.1187c-.7811-.781-2.0474-.781-2.8285 0l-.1719.172c-.7811.781-.7811 2.0474 0 2.8284l3.1186 3.1187c.7811.781 2.0474.781 2.8285 0l.1719-.172c.7811-.781.7811-2.0474 0-2.8284Z"/>
+                </svg>
+
+                <div>
+                    <h3 class="font-extrabold">Uso de herramientas y recursos</h3>
+                    <p class="text-neutral-400">Optimización de materiales, texturas y detalles.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- links cursos -->
+        <div class="flex flex-col max-w-5xl w-full mt-12">
+            <div class="flex flex-col w-11/12 items-center">
+                <h2 class="flex items-center text-4xl font-extrabold">
+                <svg class="w-9 h-9 mr-2 text-emerald-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.78552 9.5 12.7855 14l9-4.5-9-4.5-8.99998 4.5Zm0 0V17m3-6v6.2222c0 .3483 2 1.7778 5.99998 1.7778 4 0 6-1.3738 6-1.7778V11"/>
+                </svg>
+                Cursos</h2>
+                <p class="mt-2 text-neutral-500 text-center max-w-">Aqui podras encontrar todo nuestro cursos disponibles</p>
+            </div>
+            <!-- Contenedor de las cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8 mx-auto">
+
+                <a href="/Academia/terrenos">
+                    <div class="relative flex bg-neutral-800 w-80 h-52 rounded-xl items-end cursor-pointer group">
+                        <img class=" absolute object-cover h-full rounded-xl" src="/curso-terra.webp" alt="Imagen de un terreno custom de minecraft">
+                        <div class="absolute bottom-0 right-0 h-11/12 w-full bg-gradient-to-t from-neutral-900 to-100% group-hover:from-emerald-800 transition-all duration-300 ease"></div>
+                        <h3 class="relative flex items-center m-4 font-bold text-xl text-neutral-400 group-hover:-translate-y-1 transition-all duration-300 ease">Terrenos
+                            <svg class="w-6 h-6 ml-2 text-neutral-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H4m12 0-4 4m4-4-4-4m3-4h2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-2"/>
+                            </svg>
+                        </h3>
+                    </div>
+                </a>
+                
+                <a href="/Academia/estructuras">
+                    <div class="relative flex bg-neutral-800 w-80 h-52 rounded-xl items-end cursor-pointer group">
+                        <img class=" absolute object-cover h-full rounded-xl" src="/curso-terra.webp" alt="Imagen de un terreno custom de minecraft">
+                        <div class="absolute bottom-0 right-0 h-11/12 w-full bg-gradient-to-t from-neutral-900 to-100% group-hover:from-emerald-800 transition-all duration-300 ease"></div>
+                        <h3 class="relative flex items-center m-4 font-bold text-xl text-neutral-400 group-hover:-translate-y-1 transition-all duration-300 ease">Estruturas
+                            <svg class="w-6 h-6 ml-2 text-neutral-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H4m12 0-4 4m4-4-4-4m3-4h2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-2"/>
+                            </svg>
+                        </h3>
+                    </div>
+                </a>
+                
+                <a href="/Academia/texturizacion">
+                    <div class="relative flex bg-neutral-800 w-80 h-52 rounded-xl items-end cursor-pointer group">
+                        <img class=" absolute object-cover h-full rounded-xl" src="/curso-terra.webp" alt="Imagen de un terreno custom de minecraft">
+                        <div class="absolute bottom-0 right-0 h-11/12 w-full bg-gradient-to-t from-neutral-900 to-100% group-hover:from-emerald-800 transition-all duration-300 ease"></div>
+                        <h3 class="relative flex items-center m-4 font-bold text-xl text-neutral-400 group-hover:-translate-y-1 transition-all duration-300 ease">Texturizacion
+                            <svg class="w-6 h-6 ml-2 text-neutral-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 12H4m12 0-4 4m4-4-4-4m3-4h2a3 3 0 0 1 3 3v10a3 3 0 0 1-3 3h-2"/>
+                            </svg>
+                        </h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <a class="mt-12 mb-12 px-5 py-2.5 bg-emerald-500/30 rounded-xl hover:bg-emerald-500 shadow hover:shadow-lg hover:shadow-emerald-500 hover:-translate-y-1 transition-all duration-300 ease" href="/Academia/tips">¡Conoce algunos Tips mas!</a>
+    </header>
+</Layout>
