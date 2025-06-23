@@ -1,13 +1,18 @@
 ---
 ---
-<header id="hero" class="hero">
+<header id="hero" class="hero justify-between items-center">
     <div class="overlay-general"></div>
-    <div class="hero-logo flex-col sm:flex-row">
-        <img src="/Urban_Logo_1.png">
-        <h1 class="text-[90px] sm:text-[120px]">URBAN <span class="text-[60px] sm:text-[80px]">BUILDERS</span></h1>
+    <div class="z-1">
+        <div class="hero-logo flex-col sm:flex-row mt-32">
+            <img src="/Urban_Logo_1.png">
+            <h1 class="text-[90px] sm:text-[120px]">URBAN <span class="text-[60px] sm:text-[80px]">BUILDERS</span></h1>
+        </div>
+        <div class="hero-btns">
+            <a class="btn" href="#"><i class="fa-solid fa-link"></i> mc.urbanbuilder.net</a>
+        </div>
     </div>
-    <div class="hero-btns">
-        <a class="btn" href="#"><i class="fa-solid fa-link"></i> mc.urbanbuilder.net</a>
+    <div class="z-1 flex flex-col justify-center items-center p-8 text-xl">
+        <i class="arrow-down fa-solid fa-arrow-down"></i>
     </div>
 </header>
 <style>
@@ -16,13 +21,10 @@
         height: 100dvh;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: center;
         background-image: url(../assets/bg-main.png);
         background-size: cover;
         background-repeat: no-repeat;
         background-position: center;
-        font-family: 'Poppins', sans-serif;  
     }
     .overlay-general {
         position: absolute;
@@ -30,7 +32,7 @@
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: rgba(0, 0, 0, 0.2); /* Ajusta la opacidad aquí */
+        background-color: rgba(0, 0, 0, 0.2);
         backdrop-filter: blur(5px);
         z-index: 1;
     }
@@ -39,7 +41,6 @@
         align-items: center;
         justify-content: center;
         gap: 1rem;
-        z-index: 2;
     }
     .hero-logo img{
         width: auto;
@@ -54,12 +55,11 @@
     }
     .hero-logo span{
         display: block;
-        font-family: 'Satisfy';
+        font-family: 'Satisfy', sans-serif;
         color: #b6b6b6;
     }
     .hero-btns{
         margin-top: 4rem;
-        z-index: 1;
         display: flex;
         justify-content: center;
         gap: 1rem;
@@ -76,5 +76,28 @@
         background-color: rgb(0, 255, 170, 0.5);
         box-shadow: 0 5px 15px rgb(0, 255, 170, 0.5);
         transform: translateY(-5px);
+    }
+
+    .arrow-down{
+        animation-name: arrow_down;
+        animation-duration: 1.5s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease;
+    }
+
+
+    @keyframes arrow_down {
+        0% {
+            transform: translateY(-5px) scale(1);
+            opacity: 0.4;
+        }
+        50% {
+            transform: translateY(5px) scale(1.1);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(-5px);
+            opacity: 0.3;
+        }
     }
 </style>

@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import Navbar from '../components/Navbar.astro';
 import Team from '../components/Team.astro'
 import Comunity from '../components/Comunity.astro';
+import Footer from '../components/Footer.astro';
 ---
 
 <Layout title="Urban Builders">
@@ -14,10 +15,10 @@ import Comunity from '../components/Comunity.astro';
 			<h2 class="h1-1 text-center">¿Que es <span>Urban Builders</span>?</h2>
 			<div class="what-container text-center sm:text-left flex-col sm:flex-row">
 				<img src="/members.png" alt="">
-				<p class="max-w-80">En <b>UrbanBuilders</b>, unimos a constructores <span>creativos</span> para compartir, <span>aprender y colaborar</span> en proyectos únicos. Ofrecemos un espacio donde <span>la construcción es el corazón</span>, con <b>servidores exclusivos, plots públicas y herramientas</b> para que tu imaginación no tenga límites.</p>
+				<p class="max-w-96">En <b>UrbanBuilders</b>, unimos a constructores <span>creativos</span> para compartir, <span>aprender y colaborar</span> en proyectos únicos. Ofrecemos un espacio donde <span>la construcción es el corazón</span>, con <b>servidores exclusivos, plots públicas y herramientas</b> para que tu imaginación no tenga límites.</p>
 			</div>
 			<div class="what-container text-center sm:text-left flex-col sm:flex-row">
-				<p class="order-2 sm:order-1 max-w-80">Mientras la mayoría de comunidades destacadas son en inglés, en <b>UrbanBuilders</b> celebramos el talento <span>hispanohablante</span>, ofreciendo un espacio inclusivo donde el <b>idioma</b> no sea un obstáculo para <span>crecer, inspirar y conectar</span>. <br><br>
+				<p class="order-2 sm:order-1 max-w-96">Mientras la mayoría de comunidades destacadas son en inglés, en <b>UrbanBuilders</b> celebramos el talento <span>hispanohablante</span>, ofreciendo un espacio inclusivo donde el <b>idioma</b> no sea un obstáculo para <span>crecer, inspirar y conectar</span>. <br><br>
 
 				Ser el <span>referente para builders hispanohablantes</span>, fomentando la creatividad, la colaboración y el profesionalismo dentro de <b>Minecraft</b>.</p>
 				<img class="order-1 sm:order-2" src="/users.png" alt="">
@@ -26,6 +27,7 @@ import Comunity from '../components/Comunity.astro';
 		</section>
 		<Team></Team>
 	</main>
+	<Footer></Footer>
 
 	<style>
 		main{
@@ -34,7 +36,6 @@ import Comunity from '../components/Comunity.astro';
 			flex-direction: column;
 			align-items: center;
 			justify-content: center;
-			font-family: 'Poppins';
 		}
 		.info{
 			display: flex;
