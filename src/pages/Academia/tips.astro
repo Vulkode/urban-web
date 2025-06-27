@@ -1,9 +1,20 @@
 ---
 import Navbar from "../../components/Navbar.astro";
+import Footer from "../../components/Footer.astro";
+import VideoCurso from "../../components/VideoCurso.astro";
 import Layout from "../../layouts/Layout.astro";
 ---
 
 <Layout>
     <Navbar></Navbar>
-    <h1>Videos de Tips</h1>
+    <main class="w-full flex justify-center">
+        <div class="w-11/12 max-w-xl flex flex-col items-center mt-32">
+            <VideoCurso
+            title="Primer Guia: Arceon"
+            text="En este video podras aprender la a crear formas con el pincel boulder del plugin arceon, con las que podras crear terrenos increibles"
+            video_id="https://youtube.com/embed/KsJdJ9UaqQw?si=jwzLNHyJwJyn6NHc"
+            />
+        </div>
+    </main>
+    <Footer></Footer>
 </Layout>

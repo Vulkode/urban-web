@@ -1,11 +1,12 @@
 ---
-    const {id, question, descp, link, path_video} = Astro.props
+    const {id, question, descp, descp2, link, path_video} = Astro.props
 ---
 
-<details id={id} class="rounded-xl p-2 open:border-2 open:border-neutral-600">
+<details id={id} class="rounded-xl p-2 mt-4 open:border-2 open:border-neutral-600">
     <summary>{question}</summary>
     <div class="mt-4">
-        <p class="text-neutral-500">{descp}</p>  
+        <p class="text-neutral-400">{descp}</p>  
+        <p class="mt-2 text-neutral-400">{descp2}</p>
         <div class="mt-2">
             {link && <a class="transition-all duration-300 ease text-emerald-500" href={link} target="_blank">{link}</a>}
         </div>

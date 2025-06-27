@@ -43,7 +43,7 @@ import DetailCard from "../components/DetailCard.astro"
                     </svg>
                     <div>
                         <h3 class="text-2xs">¿Dónde puedo entrar al servidor?</h3>
-                        <a class="text-xs text-emerald-500 border-b-2 border-emerald-500" href="#">¡Click para ir alla!</a>
+                        <a class="text-xs text-emerald-500 border-b-2 border-emerald-500" href="/Ayuda#ip">¡Click para ir alla!</a>
                     </div>
                 </div>
 
@@ -54,7 +54,7 @@ import DetailCard from "../components/DetailCard.astro"
                     </svg>
                     <div>
                         <h3 class="text-2xs">¿El servidor es premium o no premium?</h3>
-                        <a class="text-xs text-emerald-500 border-b-2 border-emerald-500" href="#">¡Click para ir alla!</a>
+                        <a class="text-xs text-emerald-500 border-b-2 border-emerald-500" href="/Ayuda#premiun">¡Click para ir alla!</a>
                     </div>
                 </div>
 
@@ -66,7 +66,7 @@ import DetailCard from "../components/DetailCard.astro"
                     </svg>
                     <div>
                         <h3 class="text-2xs">¿Qué versiones de Minecraft son compatibles?</h3>
-                        <a class="text-xs text-emerald-500 border-b-2 border-emerald-500" href="#">¡Click para ir alla!</a>
+                        <a class="text-xs text-emerald-500 border-b-2 border-emerald-500" href="/Ayuda#version">¡Click para ir alla!</a>
                     </div>
                 </div>
 
@@ -78,7 +78,7 @@ import DetailCard from "../components/DetailCard.astro"
                     </svg>
                     <div>
                         <h3 class="text-2xs">¿Puedo mostrar mis construcciones?</h3>
-                        <a class="text-xs text-emerald-500 border-b-2 border-emerald-500" href="#">¡Click para ir alla!</a>
+                        <a class="text-xs text-emerald-500 border-b-2 border-emerald-500" href="/Ayuda#build">¡Click para ir alla!</a>
                     </div>
                 </div>
 
@@ -89,7 +89,7 @@ import DetailCard from "../components/DetailCard.astro"
                     </svg>
                     <div>
                         <h3 class="text-2xs">¿Hay algún requisito para entrar?</h3>
-                        <a class="text-xs text-emerald-500 border-b-2 border-emerald-500" href="#">¡Click para ir alla!</a>
+                        <a class="text-xs text-emerald-500 border-b-2 border-emerald-500" href="/Ayuda#join">¡Click para ir alla!</a>
                     </div>
                 </div>
 
@@ -108,10 +108,30 @@ import DetailCard from "../components/DetailCard.astro"
             <div class="w-11/12 max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Columna Left y en mobile top -->
                 <div class="p-2">
+                    <DetailCard
+                        question="¿Como me postulo para el rango Member?"
+                        descp="Para Postularte para el rango member necesitas tener un nivel medio/alto de construccion, ademas de contar con un portafolio donde muestres tus  mejores construcciones."
+                        descp2="Si Cuentas con todo esto, entra al link de abajo que te llevara al canal de tickets en discord, dentro tendras que crear un ticket y especificar que te quieres postular para el rango member y seguido subir el link de tu portafolio."
+                        link="https://discord.gg/UhtWrZN6eP"
+                    />
+
                     <DetailCard 
+                        id="download"
                         question="¿Puedo descargar mi Construccion?"
                         descp="¡Claro! Puedes descargar tu construccion en formato .schem. Mira el siguiente video donde te explicamos como hacerlo."
                         path_video="/videos/help-download.mp4"
+                    />
+
+                    <DetailCard 
+                        id="premiun"
+                        question="¿El servidor es premium o no premium?"
+                        descp="En el servidor puedes entrar siendo premiun o no Premiun, cualquiera de los dos puede entrar. Asi que ven y entra, la ip es: mc.urbanbuilder.net"
+                    />
+                    <DetailCard 
+                        id="build"
+                        question="¿Puedo mostrar mis construcciones?"
+                        descp="¡Claro! en nuestro servidor de comunidad en discord tenemos un canal llamado showcase, donde podras subir tus mejores construcciones(Abajo te dejamos el link directo al canal)."
+                        link="https://discord.gg/3jNRdpTdbp"
                     />
                 </div> 
 
@@ -130,8 +150,23 @@ import DetailCard from "../components/DetailCard.astro"
                         descp="En el siguiente video podras ver como agregar el servidor de Minecraft"
                         path_video="/videos/help-ip.mp4"
                     />
+
+                    <DetailCard
+                        id="join" 
+                        question="¿Hay algún requisito para entrar?"
+                        descp="¡No! no pedimos ningun requisito para que seas parte de nuestra comunidad, solo esperamos que tengas ganas de construir 😊"
+                    />
+
+                    <DetailCard
+                        id="version" 
+                        question="¿Qué versiones de Minecraft son compatibles?"
+                        descp="En Urban Builders puedes entrar apartir de la 1.16 hasta la 1.21.5"
+                    />
                 </div> 
             </div>
+        </section>
+        <section class="w-full h-80 flex items-center justify-center">
+            <p class="w-full max-w-2xl text-center text-neutral-400">Si no encuentras respuesta a tu duda con alguna de estas preguntas frecuentes, te <span class="text-emerald-500">invitamos</span> a unirte a nuestro servidor de <a class="border-b-2 border-emerald-500 text-emerald-500" href="https://discord.gg/YTTAsk9Xb3" target="_blank">discord</a> donde podras encontrar atencion mas <span class="text-emerald-500">personalizada</span>.</p>
         </section>
     </main>
     
