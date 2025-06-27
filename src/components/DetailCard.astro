@@ -1,0 +1,11 @@
+---
+    const {question, descp, path_video} = Astro.props
+---
+
+<details class="rounded-xl p-2 open:border-2 open:border-neutral-600">
+    <summary>{question}</summary>
+    <div class="mt-4">
+        <p class="text-neutral-500">{descp}</p>  
+        {path_video && <video src={path_video} controls></video>}
+    </div>
+</details>
