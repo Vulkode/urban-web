@@ -32,7 +32,7 @@ import DetailCard from "../components/DetailCard.astro"
                     </svg>
                     <div>
                         <h3 class="text-2xs">¿Cómo puedo unirme a la comunidad?</h3>
-                        <a class="text-xs text-emerald-500 border-b-2 border-emerald-500" href="#">¡Click para ir alla!</a>
+                        <a class="text-xs text-emerald-500 border-b-2 border-emerald-500" href="/Ayuda#comunidad">¡Click para ir alla!</a>
                     </div>
                 </div>
 
@@ -117,7 +117,19 @@ import DetailCard from "../components/DetailCard.astro"
 
                 <!-- columna Right y en mobiles bottom -->
                 <div class="p-2">
-                    
+                    <DetailCard
+                        id="comunidad" 
+                        question="¿Como puedo Unirme a la Comunidad?"
+                        descp="Nuestra comunidad esta principalmente situada en Discord, asi que si te quieres unir a nuestra comunidad entra al siguiente enlace y unete a nuestro servidor de discord."
+                        link="https://discord.gg/YTTAsk9Xb3"
+                    />
+
+                    <DetailCard
+                        id="ip" 
+                        question="¿Dónde puedo entrar al servidor?"
+                        descp="En el siguiente video podras ver como agregar el servidor de Minecraft"
+                        path_video="/videos/help-ip.mp4"
+                    />
                 </div> 
             </div>
         </section>
