@@ -1,0 +1,7 @@
+---
+    const { path_img, autor, social } = Astro.props
+---
+
+<div class="flex bg-neutral-800 rounded-2xl w-80 h-52 overflow-hidden">
+    <img class="object-cover w-full h-full rounded-2xl" src={path_img || '/Destacados/notfound.png'} alt="">
+</div>
