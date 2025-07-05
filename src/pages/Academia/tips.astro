@@ -3,16 +3,18 @@ import Navbar from "../../components/Navbar.astro";
 import Footer from "../../components/Footer.astro";
 import VideoCurso from "../../components/VideoCurso.astro";
 import Layout from "../../layouts/Layout.astro";
+import VideoCurso2 from "../../components/VideoCurso2.astro";
 ---
 
 <Layout title="Academia | Tips">
     <Navbar></Navbar>
     <main class="w-full flex justify-center">
-        <div class="w-11/12 max-w-xl flex flex-col items-center mt-32">
-            <VideoCurso
-            title="Primer Guia: Arceon"
-            text="En este video podras aprender la a crear formas con el pincel boulder del plugin arceon, con las que podras crear terrenos increibles"
-            video_id="https://youtube.com/embed/KsJdJ9UaqQw?si=jwzLNHyJwJyn6NHc"
+        <div class="w-11/12 max-w-xl flex flex-col items-center mt-32 gap-20">
+            <VideoCurso2
+                title="Tip #1"
+                autor="SebastianMaker"
+                text="En este video podras explorar una forma muy creativa de separar el terreno de tus estructuras o viceversa"
+                path_video="/videos_academia/001-tip.mp4"
             />
         </div>
     </main>
