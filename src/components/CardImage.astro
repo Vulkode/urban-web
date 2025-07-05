@@ -2,6 +2,14 @@
     const { path_img, autor, social } = Astro.props
 ---
 
-<div class="flex bg-neutral-800 rounded-2xl aspect-video overflow-hidden">
-    <img class="object-cover w-full h-full rounded-2xl" src={path_img || '/Destacados/notfound.png'} alt="">
+<div class="relative flex justify-center items-end bg-neutral-800 shadow-lg shadow-neutral-950 rounded-2xl aspect-video group">
+    <img class="relative object-cover w-full h-full rounded-2xl" src={path_img || '/Destacados/notfound.png'} alt="">
+    <div class="absolute w-full max-w-10/12 flex justify-center text-center px-2 py-1 rounded-2xl bg-neutral-800/50 opacity-0 items-center ml-4 mr-4 mb-1.5 font-medium text-2xs text-neutral-300 scale-75 transition-all duration-300 ease-out group-hover:opacity-100 group-hover:scale-100 group-hover:-translate-y-1"> 
+        <div class="flex flex-col">
+            <span class="text-xs">Por:</span> <span>{autor}</span>
+        </div>
+        <div class="flex flex-col ml-12">
+            <span class="text-xs">Discord:</span> <span>{social}</span>
+        </div>
+    </div>
 </div>
