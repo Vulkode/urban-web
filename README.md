@@ -56,7 +56,7 @@ Si quieres ser parte de esta comunidad o ayudar con el desarrollo de la página,
 
 Si tienes preguntas o quieres sugerir algo, no dudes en contactarnos en:
 
-- Discord: [UrbanBuilders#1234](https://discord.gg/TbMD3zdWXt)
+- Discord: [UrbanBuilders](https://discord.gg/YTTAsk9Xb3)
 
 ---
 
