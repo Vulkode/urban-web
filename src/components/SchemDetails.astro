@@ -1,21 +1,11 @@
 ---
-import fs from "node:fs";
-import { UPLOAD_PATH } from "../utils/schem-handler";
+import { getSchemUrl } from "@/utils/schem-handler";
 const { uuid } = Astro.props;
-let fileExists = false;
-let fileName;
-
-if (fs.existsSync(UPLOAD_PATH + `/${uuid}.schem`)) {
-	fileName = `${uuid}.schem`;
-	fileExists = true;
-} else if (fs.existsSync(UPLOAD_PATH + `/${uuid}.nbt`)) {
-	fileName = `${uuid}.nbt`;
-	fileExists = true;
-}
+const fileUrl = await getSchemUrl(uuid);
 ---
 
 {
-	fileExists ? (
+	fileUrl ? (
 		<div class="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl shadow-xl p-1">
 			<div class="bg-neutral-900 rounded-2xl p-6 flex flex-col items-center gap-6">
 				<div class="flex items-center flex-col md:flex-row gap-3">
@@ -61,7 +51,7 @@ if (fs.existsSync(UPLOAD_PATH + `/${uuid}.schem`)) {
 						type="button"
 						id="download-button"
 						data-uuid={uuid}
-						data-file-name={fileName}
+						data-file={fileUrl}
 						class="flex items-center w-[100%] md:w-auto justify-center cursor-pointer gap-2 px-5 py-2.5 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-300 transition-all"
 					>
 						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -102,7 +92,7 @@ if (fs.existsSync(UPLOAD_PATH + `/${uuid}.schem`)) {
 	document.getElementById("copyUuidBtn")?.addEventListener("click", handleCopy);
 	function handleDelete() {
 		const uuid = this.dataset.uuid;
-		fetch(`/delete.php?key=${uuid}`, { method: "POST" }).then((res) => {
+		fetch(`/schematic/delete.php?key=${uuid}`, { method: "POST" }).then((res) => {
 			if (res.ok) {
 				document.getElementById("delete-feedback").textContent = "Archivo eliminado correctamente.";
 				window.location.href = window.location.pathname;
@@ -113,14 +103,13 @@ if (fs.existsSync(UPLOAD_PATH + `/${uuid}.schem`)) {
 	}
 
 	function handleDownload() {
-		const fileName = this.dataset.fileName;
+		const filePath = this.dataset.file;
 
-		const filePath = `/uploads/${fileName}`;
 		fetch(filePath).then((res) => {
 			if (res.ok) {
 				const a = document.createElement("a");
 				a.href = filePath;
-				a.download = fileName;
+				a.download = filePath.split("/").pop() || "schematic.schem";
 				document.body.appendChild(a);
 				a.click();
 				document.body.removeChild(a);

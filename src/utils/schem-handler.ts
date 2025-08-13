@@ -1,10 +1,17 @@
-import fs from "node:fs/promises";
-import fsys from "node:fs";
-import path from "node:path";
+import { del, head, put } from "@vercel/blob";
 import type { APIRoute } from "astro";
-const MAX_SIZE = 10 * 1024 * 1024;
 
-export const UPLOAD_PATH =  path.join(process.cwd(), "uploads");
+import "dotenv/config";
+import dotenv from "dotenv";
+dotenv.config();
+
+const MAX_SIZE = 4 * 1024 * 1024;
+
+export const UPLOAD_PATH = "schematic/uploads";
+
+function getBlobTokenOptions() {
+	return { token: process.env.BLOB_READ_WRITE_TOKEN };
+}
 
 export const UPLOAD_SCHEMATIC: APIRoute = async ({ request }) => {
 	try {
@@ -47,20 +54,27 @@ export const UPLOAD_SCHEMATIC: APIRoute = async ({ request }) => {
 		if (!uuid || uuid.trim().length === 0) {
 			uuid = crypto.randomUUID();
 		}
-		
+
 		const extName = name.split(".").pop();
 		const filePath = `${UPLOAD_PATH}/${uuid}.${extName}`;
-		await fs.mkdir(UPLOAD_PATH, { recursive: true });
 
-		if (fsys.existsSync(filePath)) {
-			return new Response(JSON.stringify({ error: "El uuid ya existe, vuelve a intentarlo." }), {
-				status: 409,
-				headers: { "content-type": "application/json" },
-			});
-		}
+		try {
+			const fileExists = await head(filePath, getBlobTokenOptions());
+
+			if (fileExists?.pathname) {
+				return new Response(JSON.stringify({ error: "El uuid ya existe, vuelve a intentarlo." }), {
+					status: 409,
+					headers: { "content-type": "application/json" },
+				});
+			}
+		} catch (error) {}
 
 		const buffer = Buffer.from(await file.arrayBuffer());
-		await fs.writeFile(filePath, buffer);
+		try {
+			await put(filePath, buffer, { ...getBlobTokenOptions(), access: "public" });
+		} catch (error) {
+			throw new Error("Error al subir el archivo al almacenamiento.");
+		}
 
 		return new Response(JSON.stringify({ uuid: uuid }), {
 			status: 200,
@@ -85,17 +99,12 @@ export const DELETE_SCHEMATIC: APIRoute = async ({ request }) => {
 				headers: { "content-type": "application/json" },
 			});
 		}
-
-		if (fsys.existsSync(UPLOAD_PATH + `/${uuid}.schem`)) {
-			await fs.unlink(UPLOAD_PATH + `/${uuid}.schem`);
-		} else if (fsys.existsSync(UPLOAD_PATH + `/${uuid}.nbt`)) {
-			await fs.unlink(UPLOAD_PATH + `/${uuid}.nbt`);
-		} else {
-			return new Response(JSON.stringify({ error: "Archivo no encontrado" }), {
-				status: 302,
-				headers: { "content-type": "application/json" },
-			});
-		}
+		try {
+			await del(UPLOAD_PATH + `/${uuid}.schem`, getBlobTokenOptions());
+		} catch (error) {}
+		try {
+			await del(UPLOAD_PATH + `/${uuid}.nbt`, getBlobTokenOptions());
+		} catch (error) {}
 
 		return new Response(null, {
 			status: 204,
@@ -107,3 +116,31 @@ export const DELETE_SCHEMATIC: APIRoute = async ({ request }) => {
 		});
 	}
 };
+
+export async function downloadSchematic(uuid: string, ext: string = "schem") {
+	try {
+		const blob = await head(UPLOAD_PATH + `/${uuid}.${ext}`, getBlobTokenOptions());
+
+		const fileRes = await fetch(blob.downloadUrl);
+		if (!fileRes.ok) {
+			return null;
+		}
+		return { ...blob, file: fileRes.body };
+	} catch (error) {
+		return null;
+	}
+}
+
+export async function getSchemUrl(uuid: string) {
+	try {
+		const { downloadUrl } = await head(UPLOAD_PATH + `/${uuid}.schem`, getBlobTokenOptions());
+		return downloadUrl;
+	} catch (error) {}
+
+	try {
+		const { downloadUrl } = await head(UPLOAD_PATH + `/${uuid}.nbt`, getBlobTokenOptions());
+		return downloadUrl;
+	} catch (error) {}
+
+	return null;
+}
