@@ -1,0 +1,147 @@
+---
+import fs from "node:fs";
+import { UPLOAD_PATH } from "../utils/schem-handler";
+const { uuid } = Astro.props;
+let fileExists = false;
+let fileName;
+
+if (fs.existsSync(UPLOAD_PATH + `/${uuid}.schem`)) {
+	fileName = `${uuid}.schem`;
+	fileExists = true;
+} else if (fs.existsSync(UPLOAD_PATH + `/${uuid}.nbt`)) {
+	fileName = `${uuid}.nbt`;
+	fileExists = true;
+}
+---
+
+{
+	fileExists ? (
+		<div class="bg-gradient-to-br from-green-500 to-green-600 rounded-2xl shadow-xl p-1">
+			<div class="bg-neutral-900 rounded-2xl p-6 flex flex-col items-center gap-6">
+				<div class="flex items-center flex-col md:flex-row gap-3">
+					<div class="bg-green-500/20 p-2 rounded-full">
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+						</svg>
+					</div>
+					<h2 class="text-white text-xl font-bold">#{uuid}</h2>
+				</div>
+				<div class="flex items-center justify-between flex-wrap gap-2">
+					<div class="d-inline">
+						<span class="font-bold text-white">UUID: </span>
+						<span id="uuidValue" class="text-gray-400">
+							//schem load url:{uuid}
+						</span>
+					</div>
+				</div>
+				<div class="flex flex-wrap justify-center gap-4 w-full">
+					<button
+						id="copyUuidBtn"
+						class="flex items-center w-[100%] md:w-auto justify-center cursor-pointer gap-2 px-5 py-2.5 rounded-lg bg-gray-700 text-white font-semibold hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300 transition-all"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke-width="1.5"
+							stroke="currentColor"
+							class="h-5 w-5"
+						>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"
+							/>
+						</svg>
+						<span class="text-nowrap">
+							Copiar <span class="hidden md:inline">para Minecraft</span>
+						</span>
+					</button>
+					<button
+						type="button"
+						id="download-button"
+						data-uuid={uuid}
+						data-file-name={fileName}
+						class="flex items-center w-[100%] md:w-auto justify-center cursor-pointer gap-2 px-5 py-2.5 rounded-lg bg-green-600 text-white font-semibold hover:bg-green-500 focus:outline-none focus:ring-2 focus:ring-green-300 transition-all"
+					>
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V4"
+							/>
+						</svg>
+						Descargar
+					</button>
+
+					<button
+						type="button"
+						id="delete-button"
+						data-uuid={uuid}
+						class="flex items-center w-[100%] md:w-auto justify-center cursor-pointer gap-2 px-5 py-2.5 rounded-lg bg-red-600 text-white font-semibold hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-300 transition-all"
+					>
+						<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+						</svg>
+						Eliminar
+					</button>
+				</div>
+
+				<span id="delete-feedback" class="text-sm text-gray-400 italic" />
+			</div>
+		</div>
+	) : (
+		<p class="text-red-400 text-center my-4">El archivo que intentas descargar no existe.</p>
+	)
+}
+
+<script type="module">
+	document.getElementById("delete-button")?.addEventListener("click", handleDelete);
+	document.getElementById("download-button")?.addEventListener("click", handleDownload);
+	document.getElementById("copyUuidBtn")?.addEventListener("click", handleCopy);
+	function handleDelete() {
+		const uuid = this.dataset.uuid;
+		fetch(`/delete.php?key=${uuid}`, { method: "POST" }).then((res) => {
+			if (res.ok) {
+				document.getElementById("delete-feedback").textContent = "Archivo eliminado correctamente.";
+				window.location.href = window.location.pathname;
+			} else {
+				document.getElementById("delete-feedback").textContent = "Error al eliminar el archivo.";
+			}
+		});
+	}
+
+	function handleDownload() {
+		const fileName = this.dataset.fileName;
+
+		const filePath = `/uploads/${fileName}`;
+		fetch(filePath).then((res) => {
+			if (res.ok) {
+				const a = document.createElement("a");
+				a.href = filePath;
+				a.download = fileName;
+				document.body.appendChild(a);
+				a.click();
+				document.body.removeChild(a);
+			} else {
+				document.getElementById("delete-feedback").textContent = "Error al descargar el archivo.";
+			}
+		});
+	}
+
+	function handleCopy() {
+		const uuidValue = document.getElementById("uuidValue");
+
+		if (uuidValue?.textContent) {
+			navigator.clipboard
+				.writeText(uuidValue.textContent)
+				.then(() => {
+					setMsg("UUID copiado al portapapeles.", "success");
+				})
+				.catch(() => {
+					setMsg("Error al copiar el UUID.", "error");
+				});
+		}
+	}
+</script>
