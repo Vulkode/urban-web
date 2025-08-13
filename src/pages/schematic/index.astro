@@ -1,0 +1,128 @@
+---
+export const prerender = false;
+
+import Footer from "@/components/Footer.astro";
+import Navbar from "@/components/Navbar.astro";
+import Layout from "@/layouts/Layout.astro";
+import SchemDetails from "@/components/SchemDetails.astro";
+
+const searchParams = Astro.url.searchParams;
+const uuid = searchParams.get("key");
+---
+
+<Layout title="Urban Builders">
+	<Navbar />
+	<div class="my-24 flex flex-col justify-center items-center">
+		<div class="w-full max-w-3xl space-y-8 p-8">
+			<div class="flex justify-center mb-6">
+				<img src="/Urban_Logo_1.png" alt="Urban Builders Logo" class="w-48" />
+			</div>
+			<h1 class="text-4xl font-extrabold text-white text-center mb-4">UrbanBuilders</h1>
+			<p class="text-gray-300 text-lg leading-relaxed">
+				En este centro, puedes descargar y subir <span class="text-green-400 font-semibold">schematics</span> para compartir tus construcciones
+				con la comunidad. ¡Descarga y sube tus propios schematics para enriquecer el mundo de Urban Builders!
+			</p>
+		</div>
+		<div class="bg-neutral-900 shadow-lg rounded-xl p-8 w-full max-w-3xl space-y-8">
+			{uuid && uuid.trim().length > 0 && <SchemDetails uuid={uuid} />}
+
+			<div class="bg-neutral-800 rounded-lg overflow-hidden border border-neutral-700">
+				<div class="bg-green-600 px-4 py-2">
+					<h2 class="text-white text-lg font-bold">¿Cómo descargar un schematic?</h2>
+				</div>
+				<div class="px-4 py-3 space-y-2 text-gray-300 bg-neutral-900">
+					<p class="flex justify-between">
+						<span>Copiar un schematic</span>
+						<span class="text-gray-500">//copy</span>
+					</p>
+					<p class="flex justify-between">
+						<span>Descargar schematic</span>
+						<span class="text-gray-500">//download</span>
+					</p>
+				</div>
+			</div>
+
+			<div class="bg-neutral-800 rounded-lg overflow-hidden border border-neutral-700">
+				<div class="bg-green-600 px-4 py-2">
+					<h2 class="text-white text-lg font-bold">Subir un schematic</h2>
+				</div>
+				<div class="px-4 py-3 bg-neutral-900 space-y-3">
+					<div class="flex items-center flex-col lg:flex-row gap-3">
+						<input
+							id="fileInput"
+							name="file"
+							type="file"
+							accept=".schem,.nbt"
+							class="flex-1 px-4 py-2 w-[100%] border border-neutral-700 rounded-lg bg-neutral-800 text-white focus:outline-none focus:ring-2 focus:ring-green-500"
+						/>
+						<button
+							id="uploadBtn"
+							class="px-4 py-2 w-[100%] lg:w-[auto] whitespace-nowrap rounded-lg bg-green-600 text-white hover:bg-green-500 disabled:opacity-50"
+						>
+							Subir archivo
+						</button>
+					</div>
+
+					<span id="uploadMsg" class="block text-sm text-gray-300"></span>
+					<p class="text-sm text-gray-400">
+						<span class="font-bold text-white">ATENCIÓN:</span> Solo se permiten archivos .nbt o .schem.
+					</p>
+					<p class="text-xs text-gray-500 italic">
+						Tus archivos subidos están protegidos y nunca serán utilizados ni compartidos sin tu autorización. Urban Builders cumple
+						estrictamente con sus normas de privacidad y solo tú podrás acceder o gestionar tus schematics.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<Footer />
+</Layout>
+
+<script is:inline>
+	const input = document.getElementById("fileInput");
+	const btn = document.getElementById("uploadBtn");
+	const msg = document.getElementById("uploadMsg");
+
+	function setMsg(text, type = "info") {
+		msg.textContent = text;
+		msg.classList.remove("text-red-400", "text-green-400");
+		if (type === "error") msg.classList.add("text-red-400");
+		if (type === "success") msg.classList.add("text-green-400");
+	}
+
+	function validExt(name) {
+		return /\.(schem|nbt)$/i.test(name || "");
+	}
+
+	btn?.addEventListener("click", async (e) => {
+		e.preventDefault();
+		const file = input?.files?.[0];
+		if (!file) {
+			setMsg("Selecciona un archivo primero.", "error");
+			return;
+		}
+		if (!validExt(file.name)) {
+			setMsg("Tipo de archivo no permitido. Usa .schem o .nbt.", "error");
+			return;
+		}
+		btn.disabled = true;
+		setMsg("Subiendo archivo…");
+		try {
+			const form = new FormData();
+			form.append("file", file);
+			const res = await fetch("/upload.php", { method: "POST", body: form });
+			const data = await res.json().catch(() => ({}));
+			if (!res.ok) {
+				throw new Error(data?.error || "Error al subir el archivo");
+			}
+			setMsg("Archivo subido correctamente.", "success");
+			input.value = "";
+			window.location.href = window.location.pathname + "?key=" + data?.uuid;
+		} catch (err) {
+			setMsg(err.message || "Error al subir el archivo", "error");
+		} finally {
+			btn.disabled = false;
+		}
+	});
+</script>
