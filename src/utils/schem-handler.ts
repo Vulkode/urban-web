@@ -5,13 +5,10 @@ import "dotenv/config";
 import dotenv from "dotenv";
 dotenv.config();
 
+const BLOB_READ_WRITE_TOKEN = import.meta.env.BLOB_READ_WRITE_TOKEN || process.env.BLOB_READ_WRITE_TOKEN;
 const MAX_SIZE = 4 * 1024 * 1024;
 
 export const UPLOAD_PATH = "schematic/uploads";
-
-function getBlobTokenOptions() {
-	return { token: process.env.BLOB_READ_WRITE_TOKEN };
-}
 
 export const UPLOAD_SCHEMATIC: APIRoute = async ({ request }) => {
 	try {
@@ -59,7 +56,7 @@ export const UPLOAD_SCHEMATIC: APIRoute = async ({ request }) => {
 		const filePath = `${UPLOAD_PATH}/${uuid}.${extName}`;
 
 		try {
-			const fileExists = await head(filePath, getBlobTokenOptions());
+			const fileExists = await head(filePath, { token: BLOB_READ_WRITE_TOKEN });
 
 			if (fileExists?.pathname) {
 				return new Response(JSON.stringify({ error: "El uuid ya existe, vuelve a intentarlo." }), {
@@ -71,7 +68,7 @@ export const UPLOAD_SCHEMATIC: APIRoute = async ({ request }) => {
 
 		const buffer = Buffer.from(await file.arrayBuffer());
 		try {
-			await put(filePath, buffer, { ...getBlobTokenOptions(), access: "public" });
+			await put(filePath, buffer, { token: BLOB_READ_WRITE_TOKEN, access: "public" });
 		} catch (error) {
 			throw new Error("Error al subir el archivo al almacenamiento.");
 		}
@@ -100,10 +97,10 @@ export const DELETE_SCHEMATIC: APIRoute = async ({ request }) => {
 			});
 		}
 		try {
-			await del(UPLOAD_PATH + `/${uuid}.schem`, getBlobTokenOptions());
+			await del(UPLOAD_PATH + `/${uuid}.schem`, { token: BLOB_READ_WRITE_TOKEN });
 		} catch (error) {}
 		try {
-			await del(UPLOAD_PATH + `/${uuid}.nbt`, getBlobTokenOptions());
+			await del(UPLOAD_PATH + `/${uuid}.nbt`, { token: BLOB_READ_WRITE_TOKEN });
 		} catch (error) {}
 
 		return new Response(null, {
@@ -119,7 +116,7 @@ export const DELETE_SCHEMATIC: APIRoute = async ({ request }) => {
 
 export async function downloadSchematic(uuid: string, ext: string = "schem") {
 	try {
-		const blob = await head(UPLOAD_PATH + `/${uuid}.${ext}`, getBlobTokenOptions());
+		const blob = await head(UPLOAD_PATH + `/${uuid}.${ext}`, { token: BLOB_READ_WRITE_TOKEN });
 
 		const fileRes = await fetch(blob.downloadUrl);
 		if (!fileRes.ok) {
@@ -133,13 +130,13 @@ export async function downloadSchematic(uuid: string, ext: string = "schem") {
 
 export async function getSchemUrl(uuid: string) {
 	try {
-		const { downloadUrl } = await head(UPLOAD_PATH + `/${uuid}.schem`, getBlobTokenOptions());
-		return downloadUrl;
+		const { pathname } = await head(UPLOAD_PATH + `/${uuid}.schem`, { token: BLOB_READ_WRITE_TOKEN });
+		return pathname;
 	} catch (error) {}
 
 	try {
-		const { downloadUrl } = await head(UPLOAD_PATH + `/${uuid}.nbt`, getBlobTokenOptions());
-		return downloadUrl;
+		const { pathname } = await head(UPLOAD_PATH + `/${uuid}.nbt`, { token: BLOB_READ_WRITE_TOKEN });
+		return pathname;
 	} catch (error) {}
 
 	return null;
